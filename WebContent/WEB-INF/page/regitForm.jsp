@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>公务用车系统</title>
+	<title>注册-公务用车系统</title>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -23,54 +23,21 @@
 <body class="login-bg">
     
     <div class="login layui-anim layui-anim-up">
-        <div class="message">公务用车系统-登录</div>
+        <div class="message">公务用车系统-注册</div>
         <div id="darkbannerwrap"></div>
-        ${requestScope.message}
-        <form method="post" class="layui-form" action="${ctx}/login">
+        <form method="post" class="layui-form" action="${ctx}/redit">
             <input name="loginname" placeholder="用户名" value="${loginname }"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
-            <select class="layui-input" name="tip" id="tip" lay-filter="demo" lay-verify="required" >
-            <option value="1">管理员</option>
-            <option value="2">用户</option>
-            </select>
+            <input name="username" lay-verify="required" placeholder="登录名"  type="username" class="layui-input">
+            <hr class="hr15">
             <br>
-            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <input value="注册" lay-submit lay-filter="redit" style="width:100%;" type="submit">
             <hr class="hr20" >
         </form>
-         <input value="注册" lay-submit lay-filter="login" style="width:100%; display:none;" type="button" id="redit"  onclick="lala()">
     </div>
-	<script type="text/javascript">
-	$("#redit").click(function(){
-	    alert("click");
-	})
 
-
-	layui.use(['layer', 'jquery', 'form'], function () {
-	var layer = layui.layer,
-	$ = layui.jquery,
-	form = layui.form;
-
-	form.on('select(demo)', function(data){
-	if(data.value == 1){
-		$("#redit").hide();
-	form.render('select');
-	}else if(data.value == 2){
-		$("#redit").show();
-	form.render('select');//select是固定写法 不是选择器
-	}
-	else{
-	}
-	});
-	});
-
-	
-	function lala(){
-		console.log(1);
-		alert(1);
-	}
-	</script>
 
     
   

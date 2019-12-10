@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AuthorizedInterceptor  implements HandlerInterceptor {
 
 	/** 定义不需要拦截的请求 */
-	private static final String[] IGNORE_URI = {"/loginForm", "/login","/404.html"};
+	private static final String[] IGNORE_URI = {"/loginForm","/reditForm", "/login","/404.html"};
 	
 	 /** 
      * 该方法需要preHandle方法的返回值为true时才会执行。
@@ -64,9 +64,14 @@ public class AuthorizedInterceptor  implements HandlerInterceptor {
         	/** 2.判断用户是否已经登录 */
         	if(user == null){
         		 /** 如果用户没有登录，跳转到登录页面 */
+        		if(servletPath.equals("/regitForm")) {
+        			return true;
+        	}else {
         		request.setAttribute("message", "请先登录再访问网站!");
         		request.getRequestDispatcher(Constants.LOGIN).forward(request, response);
         		return flag;
+        		
+        	}
         	}else{
         		 flag = true;
         	}

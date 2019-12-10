@@ -1,5 +1,6 @@
 package com.rain.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,18 +22,28 @@ import com.rain.domain.Notice;
 import com.rain.domain.User;
 import com.rain.service.RainService;
 import com.rain.util.common.Constants;
+import com.rain.util.common.TimeUtil;
 
 @Controller
 public class UserController {
+	
 	@Autowired
 	@Qualifier("RainService")
 	private RainService rainservice;
+	
+	
 	// 如果在目录下输入为空，则跳转到指定链接
 		@RequestMapping(value="/user/")
 		 public ModelAndView index2(ModelAndView mv){
 			mv.setViewName("/user/list");
 			return mv;
 		}
+		
+		@RequestMapping(value="/regitForm/")
+		public String regitIndex() {
+			return "regitForm";
+		}
+		
 //		退出功能
 		@RequestMapping(value="/user/logout")
 		 public ModelAndView logout(ModelAndView mv, HttpSession session){
@@ -85,6 +96,26 @@ public class UserController {
 			}
 			return mv;
 		}
+		
+		@RequestMapping(value="/redit", method = RequestMethod.POST)
+		public ModelAndView  regdit(@RequestParam("loginname") String loginname,
+				 @RequestParam("password") String password,@RequestParam("username") String username,
+				 HttpSession session,
+				 ModelAndView mv) {
+			
+			User user = new User();
+			user.setCreate_date(TimeUtil.dateFormat(new Date()));
+			user.setStatus(1);
+			user.setPassword(password);
+			user.setLoginname(loginname);
+			user.setUsername(username);
+			rainservice.insert_UserInfo(user);
+			mv.setViewName("redirect:/index");
+			return mv;
+			
+		}
+		
+		
 		// 如果在目录下输入任何不存在的参数，则跳转到list
 		@RequestMapping(value="/user/{formName}")
 		 public String index2(@PathVariable String formName){

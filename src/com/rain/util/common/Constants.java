@@ -13,6 +13,8 @@ public class Constants {
 		
 		// 登录
 		public static final String LOGIN = "loginForm";
+		// 注册
+		public static final String REDIT = "reditForm";
 		// 用户的session对象
 		public static final String USER_SESSION = "user_session";
 		
