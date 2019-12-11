@@ -97,14 +97,14 @@ public class UserController {
 			return mv;
 		}
 		
-		@RequestMapping(value="/redit", method = RequestMethod.POST)
+		@RequestMapping(value="/regit", method = RequestMethod.POST)
 		public ModelAndView  regdit(@RequestParam("loginname") String loginname,
 				 @RequestParam("password") String password,@RequestParam("username") String username,
 				 HttpSession session,
 				 ModelAndView mv) {
 			
 			User user = new User();
-			user.setCreate_date(TimeUtil.dateFormat(new Date()));
+//			user.setCreate_date(TimeUtil.dateFormat(new Date()));
 			user.setStatus(1);
 			user.setPassword(password);
 			user.setLoginname(loginname);

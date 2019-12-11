@@ -27,7 +27,7 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
       <span class="layui-breadcrumb">
         <a href="">首页</a>
         <a>
-          <cite>用车信息</cite></a>
+          <cite>公告信息</cite></a>
       </span>
       <button type="button" onclick="location.href='${ctx}/document/add'" class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:innert;margin-left:75%;;"  ><i class="layui-icon"></i>增加</button>
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx }/leave/list" title="刷新">
@@ -57,15 +57,9 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
             </th>
             <th>ID</th>
             <th>车名</th>
-            <th>申请人</th>
+ 
             <th>车类型</th>
-            <th>开始时间</th>
-            <th>结束时间</th>
-            <th>时长</th>
-            <th>审批人</th>
-            <th>状态</th>
-            <th>申请时间</th>
-            <th>审批时间</th>
+
         </thead>
         <tbody>	    <c:forEach items="${requestScope.list}" var="leave" varStatus="stat">
      <tr>
@@ -74,19 +68,8 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
             </td>
             <td>${leave.id}</td>
             <td>${leave.carname}</td>
-            <td>${leave.eName}</td>
             <td>${leave.leaveName}</td>
-            <td>${leave.start_time }</td>
-            <td>${leave.stop_time }</td>
-            <td>${leave.duration }</td>
-            <td>${leave.pName }</td>
-            <td> <c:choose>
-					        	<c:when test="${leave.status == 0 }">未审批</c:when>
-					        	<c:when test="${leave.status == 1 }">同意</c:when>
-					        	<c:when test="${leave.status == 2 }">不同意</c:when>
-					  </c:choose></td>
-            <td>${leave.create_time }</td>
-            <td>${leave.update_time }</td>
+
             
            <!--  <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->
@@ -97,7 +80,7 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
                 <i class="layui-icon">&#xe601;</i>
               </a> -->
               <%-- <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/job/add?id=${dept.id }');" href="javascript:;"> --%>
-              <a title="审批"  href="${ctx}/leave/edit?id=${leave.id }">
+              <a title="申请"  href="${ctx}/leave/edit?id=${leave.id }">
                 <i class="layui-icon">&#xe642;</i>
               </a>
               <a title="删除" onclick="member_del(this,'${leave.id }')" href="javascript:;">

@@ -25,6 +25,9 @@ public class LeaveDynaSqlProvider {
 						if(leave.getLeaveid()!=null){
 							VALUES("leaveid","#{leaveid}");
 						}
+						if(leave.getCarname()!=null){
+							VALUES("carname","#{carname}");
+						}
 						if(leave.getEid()!=null){
 							VALUES("eid","#{eid}");
 						}
@@ -47,7 +50,6 @@ public class LeaveDynaSqlProvider {
 							VALUES("reqmessage","#{reqmessage}");
 						}
 					
-						
 					}
 				}.toString();
 			}	
@@ -58,37 +60,40 @@ public class LeaveDynaSqlProvider {
 					{
 						UPDATE(LEAVETABLE);
 						if(leave.getDuration()!=null){
-							VALUES("duration","#{duration}");
+							SET(" duration = #{duration} ");
 						}
 						if(leave.getStart_time()!=null){
-							VALUES("start_time","#{start_time}");
+							SET("start_time = #{start_time}");
 						}
 						if(leave.getStop_time()!=null){
-							VALUES("stop_time","#{stop_time}");
+							SET("stop_time = #{stop_time}");
 						}
 						if(leave.getLeaveid()!=null){
-							VALUES("leaveid","#{leaveid}");
+							SET("leaveid = #{leaveid}");
+						}
+						if(leave.getCarname()!=null){
+							SET("carname = #{carname}");
 						}
 						if(leave.getEid()!=null){
-							VALUES("eid","#{eid}");
+							SET("eid = #{eid}");
 						}
 						if(leave.getStatus()!=null){
-							VALUES("status","#{status}");
+							SET("status = #{status}");
 						}
 						if(leave.getPid()!=null){
-							VALUES("pid","#{pid}");
+							SET("pid = #{pid}");
 						}
 						if(leave.getRemark()!=null){
-							VALUES("remark","#{remark}");
+							SET("remark = #{remark}");
 						}
 						if(leave.getCreate_time()!=null){
-							VALUES("create_time","#{create_time}");
+							SET("create_time = #{create_time}");
 						}
 						if(leave.getUpdate_time()!=null){
-							VALUES("update_time)","#{update_time}");
+							SET("update_time = #{update_time}");
 						}
 						if(leave.getReqmessage()!=null){
-							VALUES("reqmessage","#{reqmessage}");
+							SET("reqmessage = #{reqmessage}");
 						}
 						
 						WHERE(" id = #{id} ");

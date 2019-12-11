@@ -25,7 +25,7 @@
     <div class="login layui-anim layui-anim-up">
         <div class="message">公务用车系统-注册</div>
         <div id="darkbannerwrap"></div>
-        <form method="post" class="layui-form" action="${ctx}/redit">
+        <form method="post" class="layui-form" action="${ctx}/regit" id="form1">
             <input name="loginname" placeholder="用户名" value="${loginname }"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
@@ -33,11 +33,36 @@
             <input name="username" lay-verify="required" placeholder="登录名"  type="username" class="layui-input">
             <hr class="hr15">
             <br>
-            <input value="注册" lay-submit lay-filter="redit" style="width:100%;" type="submit">
+<!--             <input value="注册" lay-submit lay-filter="redit" style="width:100%;" type="submit"> -->
+            <input type="submit" value=" 注册" class="layui-btn" lay-filter="add" lay-submit=""/>
             <hr class="hr20" >
         </form>
     </div>
+   <script>
+        layui.use(['form','layer'], function(){
+            $ = layui.jquery;
+            var form = layui.form
+            ,layer = layui.layer;
 
+          //监听提交
+          form.on('submit(add)', function(data){
+        	  
+            console.log(data);
+            //发异步，把数据提交给php
+            layer.alert("注册成功", {icon: 6},function () {
+            	document.getElementById('form1').submit();
+                // 获得frame索引
+                var index = parent.layer.getFrameIndex(window.name);
+                //关闭当前frame
+                parent.layer.close(index);
+               
+            });
+            return false;
+          });
+          
+          
+        });
+    </script>
 
     
   

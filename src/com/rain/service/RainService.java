@@ -99,6 +99,10 @@ public interface RainService {
 	
 	List<Leave> get_LeaveList();
 	
+	List<Leave> getLeaveList();
+	
+	
+	
 	String findNameById(Integer id);
 	
 	String findUserNameById(Integer id);

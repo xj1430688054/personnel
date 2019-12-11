@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="${ctx}/public/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${ctx}/public/css/font.css">
 	<link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/public/js/jquery.min.js"></script>
     <script src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
 
@@ -49,94 +49,35 @@
       <div id="side-nav">
         <ul id="nav">
          
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>部门管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/dept/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>部门列表</cite>
-                        </a>
-                    </li >
-                   
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>职位管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/job/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>职位列表</cite>
-                        </a>
-                    </li >
-                    
-                </ul>
-            </li>
            
-            <li>
+                <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>员工管理</cite>
+                    <cite>请假管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/employee/list">
+                     <li>
+                        <a _href="${ctx }/leave/list">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>员工列表</cite>
+                            <cite>审批列表</cite>
                         </a>
                     </li >
-                   
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6ce;</i>
-                    <cite>公告管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/notice/list">
+                        <a _href="${ctx }/leave/appl">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>公告查询</cite>
+                            <cite>请假申请</cite>
                         </a>
                     </li >
-                   
-                   
-                   
+                    <li>
+                        <a _href="${ctx }/leave/listuse">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用车列表</cite>
+                        </a>
+                    </li >
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b4;</i>
-                    <cite>下载中心</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/document/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>文档查询</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="${ctx }/document/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>上传文档</cite>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+
         </ul>
       </div>
     </div>
@@ -160,7 +101,7 @@
     <!-- 中部结束 -->
     <!-- 底部开始 -->
     <div class="footer">
-        <div class="copyright">Copyright ©2019 人事管理系统</div>  
+        <div class="copyright">Copyright ©2019 公务用车系统</div>  
     </div>
     <!-- 底部结束 -->
  

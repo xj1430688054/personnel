@@ -15,10 +15,13 @@ import com.rain.dao.provider.LeaveDynaSqlProvider;
 import com.rain.domain.Leave;
 import com.rain.domain.User;
 
+import jdk.nashorn.internal.objects.annotations.Where;
+
 public interface LeaveDao {
 	
-	@Select("select * from "+LEAVETABLE+" ")
+	@Select("select * from "+LEAVETABLE+" " + "where status != -1" )
 	List<Leave> get_List();
+	
 	
 	@SelectProvider(type=LeaveDynaSqlProvider.class,method="insert_Leave")
 	void insert_Info(Leave leave);
@@ -37,5 +40,8 @@ public interface LeaveDao {
 	
 	@Select("select * from "+LEAVETABLE+" where id = #{id}")
 	Leave get_Info(Integer id);
+	
+	@Select("select * from "+LEAVETABLE+" " + "where status = -1" )
+	List<Leave> getListUse();
 
 }

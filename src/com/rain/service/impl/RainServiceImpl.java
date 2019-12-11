@@ -353,4 +353,9 @@ public class RainServiceImpl implements RainService{
 		// TODO Auto-generated method stub
 		return leaveDao.get_Info(id);
 	}
+	@Override
+	public List<Leave> getLeaveList() {
+		// TODO Auto-generated method stub
+		return leaveDao.getListUse();
+	}
 }

@@ -71,74 +71,12 @@
                    
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>部门管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/dept/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>部门列表</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="${ctx }/dept/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加部门</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>职位管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/job/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>职位列表</cite>
-                        </a>
-                    </li >
-                     <li>
-                        <a _href="${ctx }/job/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加职位</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
+  
            
-            <li>
+                           <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>员工管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/employee/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>员工列表</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="${ctx }/employee/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加员工</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
-                 <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
-                    <cite>请假管理</cite>
+                    <cite>用车管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
@@ -149,56 +87,17 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="${ctx }/leave/add">
+                        <a _href="${ctx }/leave/appl">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>请假申请</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
-            
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6ce;</i>
-                    <cite>公告管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/notice/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>公告查询</cite>
+                            <cite>新车增加</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="${ctx }/notice/add">
+                        <a _href="${ctx }/leave/listuse">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加公告</cite>
+                            <cite>用车列表</cite>
                         </a>
                     </li >
-                   
-                   
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b4;</i>
-                    <cite>下载中心</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/document/list">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>文档查询</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="${ctx }/document/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>上传文档</cite>
-                        </a>
-                    </li>
                 </ul>
             </li>
         </ul>

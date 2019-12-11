@@ -1,5 +1,6 @@
 package com.rain.controller;
 
+import java.applet.Applet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mysql.jdbc.Util;
 import com.rain.domain.Dept;
+import com.rain.domain.Employee;
 import com.rain.domain.Leave;
 import com.rain.domain.LeaveType;
 import com.rain.domain.User;
@@ -39,56 +41,136 @@ public class LeaveControl {
 		  List<Leave> list = rainService.get_LeaveList();
 		  List<LeaveType> leaveType = rainService.get_LeaveType();
 		  List<User> userlist = rainService.get_UserList();
+		  List<Employee> employ = rainService.get_EmployeeList();
+		  //假类型集合
 		  Map<Integer, String> map1 = new HashMap<>();
+		  //审批人集合
 		  Map<Integer, String> map2 = new HashMap<>();
+		  //请假人集合
+		  Map<Integer, String> map3 = new HashMap<>();
 		  for (User user : userlist) {
 			  map2.put(user.getId(), user.getLoginname());
 		  }
 		  for (LeaveType leaveType2 : leaveType) {
 			  	map1.put(leaveType2.getId(), leaveType2.getName());
 		  }
+		  for (Employee employee : employ) {
+			  map3.put(employee.getId(), employee.getName());
+		  }
+		  if(content != null){
+			  list.clear();
+			  list.add(rainService.get_LeaveInfo(Integer.parseInt(content)));
+		  }
 		  for (Leave leave : list) {
-			  leave.setLeaveName(map1.get(leave.getLeaveid()));
-			  if(leave.getPid() != null){
-				  leave.setpName(map2.get(leave.getPid()));
-			  }
-			  leave.seteName(map2.get(Integer.parseInt(leave.getEid())));
-		}
+			  if (null != leave.getEid()) {
+				leave.setLeaveName(map1.get(leave.getLeaveid()));
+				if (leave.getPid() != null) {
+					leave.setpName(map2.get(Integer.parseInt(leave.getEid())));
+				}
+				leave.seteName(map3.get(Integer.parseInt(leave.getEid())));
+			}
+		  	  }
 		
 		model.addAttribute("list",list);
 		return "leave/list";
 	}
 	@RequestMapping(value="/leave/edit",method=RequestMethod.GET)
 	public String edit(Leave leave, Model model){
+		leave = rainService.get_LeaveInfo(leave.getId());
 		model.addAttribute("leave",leave);
 		
 		return "leave/edit";
 	}
+	@RequestMapping("/leave/appl")
+	public String appl(Model model){
+		List<LeaveType> list = rainService.get_LeaveType();
+		Map<String, String> map = new HashMap<>();
+		for (LeaveType leaveType : list) {
+			map.put(String.valueOf(leaveType.getId()), leaveType.getName());
+		}
+		model.addAttribute("map", map);
+		
+		return "leave/appl";
+	}
 	
-	@RequestMapping(value="/leave/add",method=RequestMethod.POST)
+	@RequestMapping(value="/leave/edit",method=RequestMethod.POST)
 	 public ModelAndView add(ModelAndView mv,@ModelAttribute Leave leave , HttpSession session){
 		System.out.println(leave.getId());
 		User user = (User) session.getAttribute(Constants.USER_SESSION);
 //		System.out.println(dept.getId());
-		if(leave.getId()!=null){
 			Leave leavee = rainService.get_LeaveInfo(leave.getId());
 			leavee.setStatus(leave.getStatus());
 			leavee.setRemark(leave.getRemark());
 			leave.setPid(String.valueOf(user.getId()));
 			leave.setUpdate_time(UtilSS.getNow());
+			
 			rainService.update_leaveInfo(leave);
 			System.out.println(leave.getId());
-		}else{
-			leave.setStatus("0");
-			leave.setCreate_time(UtilSS.getNow());
-			leave.setEid(String.valueOf(user.getId()));
-			
-			rainService.insert_LeaveInfo(leave);
-		}
+
 //		System.out.println(dept.getName());
-		mv.setViewName("redirect:/dept/list");
+		mv.setViewName("redirect:/leave/list");
 		return mv;
 	}
+	
+	@RequestMapping(value="/leave/add",method=RequestMethod.POST)
+	 public ModelAndView edd(ModelAndView mv,@ModelAttribute Leave leave , HttpSession session){
+		System.out.println(leave.getId());
+//		Employee user = (Employee) session.getAttribute(Constants.USER_SESSION);
+//		System.out.println(dept.getId());
+	
+			leave.setStatus("-1");
+			leave.setCreate_time(UtilSS.getNow());
+//			leave.setEid(String.valueOf(user.getId()));
+			
+			rainService.insert_LeaveInfo(leave);
+		
+//		System.out.println(dept.getName());
+		mv.setViewName("redirect:/leave/list");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/leave/listuse",method=RequestMethod.GET)
+	 public String indexlist(Model model,String content){
+		  List<Leave> list = rainService.getLeaveList();
+		  List<LeaveType> leaveType = rainService.get_LeaveType();
+		  List<User> userlist = rainService.get_UserList();
+		  List<Employee> employ = rainService.get_EmployeeList();
+		  //假类型集合
+		  Map<Integer, String> map1 = new HashMap<>();
+		  //审批人集合
+		  Map<Integer, String> map2 = new HashMap<>();
+		  //请假人集合
+		  Map<Integer, String> map3 = new HashMap<>();
+		  for (User user : userlist) {
+			  map2.put(user.getId(), user.getLoginname());
+		  }
+		  for (LeaveType leaveType2 : leaveType) {
+			  	map1.put(leaveType2.getId(), leaveType2.getName());
+		  }
+		  for (Employee employee : employ) {
+			  map3.put(employee.getId(), employee.getName());
+		  }
+		  if(content != null){
+			  list.clear();
+			  list.add(rainService.get_LeaveInfo(Integer.parseInt(content)));
+		  }
+		  for (Leave leave : list) {
+			  leave.setLeaveName(map1.get(leave.getLeaveid()));
+			  if(leave.getPid() != null){
+				  leave.setpName(map2.get(Integer.parseInt(leave.getEid())));
+			  }
+		  	  }
+		
+		  for (Leave leave : list) {
+				leave.setLeaveName(map1.get(leave.getLeaveid()));
+			
+		  	  }
+		
+		model.addAttribute("list",list);
+		return "leave/listuse";
+	}
+
 	
 	
 

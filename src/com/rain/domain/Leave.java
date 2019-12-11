@@ -22,6 +22,9 @@ public class Leave  implements Serializable{
 	/** 请假的类型，如事假期，病假，丧家等等   此字段不在数据库表中*/
 	private String leaveName;
 	
+	/** 车名 */
+	private String carname;
+	
 	private String eName;
 	
 	private String pName;
@@ -52,6 +55,15 @@ public class Leave  implements Serializable{
 	
 	/** 审批时间*/
 	private String update_time;
+
+	
+	public String getCarname() {
+		return carname;
+	}
+
+	public void setCarname(String carname) {
+		this.carname = carname;
+	}
 
 	public synchronized Integer getId() {
 		return id;
