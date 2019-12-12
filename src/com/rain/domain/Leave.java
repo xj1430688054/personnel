@@ -44,7 +44,7 @@ public class Leave  implements Serializable{
 	/** 申请时间*/
 	private String create_time;
 	
-	/** 状态0表示未审批，1表示审批同意 2表示不同意 */
+	/** 状态 -1表示未预约， 0表示未审批，1表示审批同意 2表示不同意 */
 	private String status;
 	
 	/** 审批人id*/

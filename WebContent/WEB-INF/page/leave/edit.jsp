@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${ctx}/public/css/font.css">
     <link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/public/js/jquery.min.js"></script>
     <script type="text/javascript" src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -24,7 +24,7 @@
   
   <body>
     <div class="x-body">
-        <form class="layui-form" method="POST" id="leaveForm"  action="${ctx}/leave/add">
+        <form class="layui-form" method="POST" id="leaveForm"  action="${ctx}/leave/edit">
         <input type="hidden" name="id" id="id" value="${leave.id }" >
           <div class="layui-form-item" >
               <label for="username" class="layui-form-label">
@@ -83,6 +83,58 @@
           
           
         });
+        
+        function lala(){
+            var start = document.getElementById("start_time").value;
+            var stop = document.getElementById("stop_time").value;
+            if(start==""){
+            	alter("请输入用车开始事件")
+            }
+            if(stop==""){
+            	alter("请输入用车结束时间")
+            }
+            getHoliday(start, stop);
+            console.log(getHoliday(start, stop));
+            $("#duration").trigger("input"); 
+        	$("#duration").val(getHoliday(start, stop) + "天");
+        }
+        function getHoliday(sdate, edate) {
+            var num = datedifference(sdate, edate);
+            var lastday = num % 7;
+            var weeknum = 0;
+            if (num >= 7) {
+                weeknum = parseInt(num / 7);
+            }
+
+            var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var result = 0;
+            for (var i = 0; i < lastday; i++) {
+                var dd = new Date(addDate(sdate, i)).getDay();
+                if (weekday[dd] != "星期六" && weekday[dd] != "星期日") {
+                    result++;
+                }
+            }
+            return result + weeknum * 5 + 1;
+          //  return result + weeknum * 5;
+        }
+
+        //两个时间相差天数 兼容firefox chrome
+        function datedifference(sDate1, sDate2) { //sDate1和sDate2是2006-12-18格式  
+            var dateSpan, tempDate, iDays;
+            sDate1 = Date.parse(sDate1);
+            sDate2 = Date.parse(sDate2);
+            dateSpan = sDate2 - sDate1;
+            dateSpan = Math.abs(dateSpan);
+            iDays = Math.floor(dateSpan / (24 * 3600 * 1000));
+            return iDays
+        };
+
+        function addDate(date, days) {
+            var d = new Date(date);
+            d.setDate(d.getDate() + days);
+            var m = d.getMonth() + 1;
+            return d.getFullYear() + '-' + m + '-' + d.getDate();
+        }
     </script>
     
   </body>

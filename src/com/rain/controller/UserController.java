@@ -98,18 +98,12 @@ public class UserController {
 		}
 		
 		@RequestMapping(value="/regit", method = RequestMethod.POST)
-		public ModelAndView  regdit(@RequestParam("loginname") String loginname,
-				 @RequestParam("password") String password,@RequestParam("username") String username,
-				 HttpSession session,
-				 ModelAndView mv) {
-			
-			User user = new User();
-//			user.setCreate_date(TimeUtil.dateFormat(new Date()));
-			user.setStatus(1);
-			user.setPassword(password);
-			user.setLoginname(loginname);
-			user.setUsername(username);
-			rainservice.insert_UserInfo(user);
+		public ModelAndView  regdit(ModelAndView mv,@ModelAttribute Employee job ,Integer id) {
+			if(id!=null){
+				rainservice.update_EmployeeInfo(job);
+			}else{
+				rainservice.insert_EmployeeInfo(job);
+			}
 			mv.setViewName("redirect:/index");
 			return mv;
 			

@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="${ctx}/public/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${ctx}/public/css/font.css">
     <link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/public/js/jquery.min.js"></script>
     <script type="text/javascript" src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->

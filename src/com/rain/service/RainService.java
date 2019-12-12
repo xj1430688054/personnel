@@ -110,5 +110,7 @@ public interface RainService {
 	List<LeaveType> get_LeaveType();
 	
 	Leave get_LeaveInfo(Integer id);
+
+	void delete_LeaveInfo(Integer id);
 	
 }

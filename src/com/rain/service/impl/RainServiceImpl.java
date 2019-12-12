@@ -358,4 +358,10 @@ public class RainServiceImpl implements RainService{
 		// TODO Auto-generated method stub
 		return leaveDao.getListUse();
 	}
+	@Override
+	public void delete_LeaveInfo(Integer id) {
+		// TODO Auto-generated method stub
+		leaveDao.delete_Info(id);
+		
+	}
 }

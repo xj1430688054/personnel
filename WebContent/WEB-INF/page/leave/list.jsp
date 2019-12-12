@@ -1,18 +1,18 @@
-listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   
   <head>
     <meta charset="UTF-8">
-    <title>公告信息</title>
+    <title>用车信息</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <link rel="shortcut icon" href="${ctx}/public/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${ctx}/public/css/font.css">
     <link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/public/js/jquery.min.js"></script>
     <script type="text/javascript" src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -61,7 +61,7 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
             <th>车类型</th>
             <th>开始时间</th>
             <th>结束时间</th>
-            <th>时长</th>
+           <!--  <th>时长</th> -->
             <th>审批人</th>
             <th>状态</th>
             <th>申请时间</th>
@@ -78,10 +78,10 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
             <td>${leave.leaveName}</td>
             <td>${leave.start_time }</td>
             <td>${leave.stop_time }</td>
-            <td>${leave.duration }</td>
+<%--             <td>${leave.duration }</td> --%>
             <td>${leave.pName }</td>
             <td> <c:choose>
-					        	<c:when test="${leave.status == 0 }">未审批</c:when>
+					        	<c:when test="${leave.status == 0 }">未审核</c:when>
 					        	<c:when test="${leave.status == 1 }">同意</c:when>
 					        	<c:when test="${leave.status == 2 }">不同意</c:when>
 					  </c:choose></td>
@@ -100,7 +100,7 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
               <a title="审批"  href="${ctx}/leave/edit?id=${leave.id }">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-              <a title="删除" onclick="member_del(this,'${leave.id }')" href="javascript:;">
+              <a title="删除" onclick="del(this,'${leave.id }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
@@ -116,16 +116,7 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
           
         </tbody>
       </table>
-     <!--  <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
-      </div> -->
+
 
     </div>
     <script>
@@ -165,6 +156,16 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
             layer.msg('删除成功', {icon: 1});
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
+      }
+      /*用户-删除*/
+      function del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              //等以后再使用异步，这里先使用
+              $.get("${ctx}/leave/del?id="+id);
+              $(obj).parents("tr").remove();
+              layer.msg('已修改!',{icon:1,time:1000});
+          });
       }
     </script>
     <script>var _hmt = _hmt || []; (function() {

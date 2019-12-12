@@ -103,12 +103,41 @@ public class LeaveControl {
 			leavee.setRemark(leave.getRemark());
 			leave.setPid(String.valueOf(user.getId()));
 			leave.setUpdate_time(UtilSS.getNow());
-			
 			rainService.update_leaveInfo(leave);
 			System.out.println(leave.getId());
 
 //		System.out.println(dept.getName());
 		mv.setViewName("redirect:/leave/list");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/leave/editor",method=RequestMethod.GET)
+	public String editOR(Leave leave, Model model){
+		leave = rainService.get_LeaveInfo(leave.getId());
+		model.addAttribute("leave",leave);
+		
+		return "leave/editor";
+	}
+	
+	//用户租车
+	@RequestMapping(value="/leave/editor",method=RequestMethod.POST)
+	 public ModelAndView edit(ModelAndView mv,@ModelAttribute Leave leave , HttpSession session){
+		System.out.println(leave.getId());
+		Employee user = (Employee) session.getAttribute(Constants.USER_SESSION);
+//		System.out.println(dept.getId());
+			Leave leavee = rainService.get_LeaveInfo(leave.getId());
+			leavee.setStatus("0");
+			leavee.setReqmessage(leave.getReqmessage());
+			leavee.setEid(String.valueOf(user.getId()));
+			leavee.setUpdate_time(UtilSS.getNow());
+			leavee.setStart_time(leave.getStart_time());
+			leavee.setStop_time(leave.getStop_time());
+			rainService.update_leaveInfo(leavee);
+			System.out.println(leave.getId());
+
+//		System.out.println(dept.getName());
+		mv.setViewName("redirect:/leave/listuse");
 		return mv;
 	}
 	
@@ -125,7 +154,7 @@ public class LeaveControl {
 			rainService.insert_LeaveInfo(leave);
 		
 //		System.out.println(dept.getName());
-		mv.setViewName("redirect:/leave/list");
+		mv.setViewName("redirect:/leave/listuse");
 		return mv;
 	}
 	
@@ -171,6 +200,14 @@ public class LeaveControl {
 		return "leave/listuse";
 	}
 
+	
+	@RequestMapping(value="/leave/del",method=RequestMethod.GET)
+	 public void delete(Integer id){
+		System.out.println(id);
+		if(id!=null){
+			rainService.delete_LeaveInfo(id);
+		}
+	}
 	
 	
 

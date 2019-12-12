@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${ctx}/public/css/font.css">
 	<link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/public/js/jquery.min.js"></script>
     <script src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
 
@@ -25,14 +25,84 @@
     <div class="login layui-anim layui-anim-up">
         <div class="message">公务用车系统-注册</div>
         <div id="darkbannerwrap"></div>
-        <form method="post" class="layui-form" action="${ctx}/regit" id="form1">
-            <input name="loginname" placeholder="用户名" value="${loginname }"  type="text" lay-verify="required" class="layui-input" >
-            <hr class="hr15">
-            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
-            <hr class="hr15">
-            <input name="username" lay-verify="required" placeholder="登录名"  type="username" class="layui-input">
-            <hr class="hr15">
-            <br>
+        <form method="post" class="layui-form" action="${ctx}/redit" id="form1">
+           <input type="hidden" name="id" id="id" value="${job.id }" >
+          <div class="layui-form-item" >
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>姓名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.name }">
+              </div>
+             
+          </div>
+          <div class="layui-form-item" >
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>密码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="password" name="password" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.password }">
+              </div>
+             
+          </div>
+          <div class="layui-form-item" >
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>身份证号码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="card_id" name="card_id" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.card_id }">
+              </div>
+          </div>
+           <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>性别
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="sex" name="sex" placeholder="男性请输入1，女性请输入2" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.sex }">
+              </div>
+          </div>
+           <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>学历
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="education" name="education" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.education }">
+              </div>
+          </div>
+           <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>邮箱
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="email" name="email" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.email }">
+              </div>
+          </div>
+           <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>手机
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="phone" name="phone" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.phone }">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>联系地址
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="address" name="address" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${job.address }">
+              </div>
+          </div>
+
+ 
 <!--             <input value="注册" lay-submit lay-filter="redit" style="width:100%;" type="submit"> -->
             <input type="submit" value=" 注册" class="layui-btn" lay-filter="add" lay-submit=""/>
             <hr class="hr20" >

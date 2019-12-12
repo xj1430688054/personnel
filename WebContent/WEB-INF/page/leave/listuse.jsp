@@ -1,4 +1,4 @@
-listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,14 +12,9 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
     <link rel="shortcut icon" href="${ctx}/public/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="${ctx}/public/css/font.css">
     <link rel="stylesheet" href="${ctx}/public/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/public/js/jquery.min.js"></script>
     <script type="text/javascript" src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   
   <body>
@@ -36,19 +31,10 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
     <div class="x-body">
       <div class="layui-row" style="" align="center">
         <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/leave/list">
-          <!-- <input class="layui-input" placeholder="开始日" name="start" id="start">
-          <input class="layui-input" placeholder="截止日" name="end" id="end"> -->
           <input type="text" name="content" style="width:50%;"  placeholder="请输入查找标题" autocomplete="off" class="layui-input">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
-      <%-- <xblock>
- <!--        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button> -->
-        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/dept/add')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
-      </xblock> --%>
-     
-      
       <table class="layui-table">
         <thead>
           <tr>
@@ -57,59 +43,41 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
             </th>
             <th>ID</th>
             <th>车名</th>
- 
             <th>车类型</th>
-
+            <th>操作</th>
         </thead>
-        <tbody>	    <c:forEach items="${requestScope.list}" var="leave" varStatus="stat">
-     <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
-            <td>${leave.id}</td>
-            <td>${leave.carname}</td>
-            <td>${leave.leaveName}</td>
-
-            
-           <!--  <td class="td-status">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->
-                <c:choose>
-			<c:when test="${sessionScope.tip  == 1 }">
-            <td class="td-manage">
-             <!--  <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                <i class="layui-icon">&#xe601;</i>
-              </a> -->
-              <%-- <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/job/add?id=${dept.id }');" href="javascript:;"> --%>
-              <a title="申请"  href="${ctx}/leave/edit?id=${leave.id }">
-                <i class="layui-icon">&#xe642;</i>
-              </a>
-              <a title="删除" onclick="member_del(this,'${leave.id }')" href="javascript:;">
-                <i class="layui-icon">&#xe640;</i>
-              </a>
-            </td>
-             </c:when>
-					        
-					  </c:choose>
+        <tbody>	    
+        <c:forEach items="${requestScope.list}" var="leave" varStatus="stat">
+     		<tr>
+	            <td>
+	              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+	            </td>
+	            <td>${leave.id}</td>
+	            <td>${leave.carname}</td>
+	            <td>${leave.leaveName}</td>
+	            <c:choose>
+				<c:when test="${sessionScope.tip  == 2 }">
+	            	<td class="td-manage">
+	              	<a title="申请"  href="${ctx}/leave/editor?id=${leave.id }">
+	                	<i class="layui-icon">&#xe642;</i>
+	              	</a>
+	            	</td>
+	             </c:when>
+				</c:choose>
+				 <c:choose>
+				<c:when test="${sessionScope.tip  == 1 }">
+	            	<td class="td-manage">
+	              	<a title="删除" onclick="del(this,'${leave.id }')" href="javascript:;">
+                		<i class="layui-icon">&#xe640;</i>
+              		</a>
+	            	</td>
+	             </c:when>
+				</c:choose>
           </tr>
-				
-			</c:forEach>
-        
-          
-          
-          
+		</c:forEach>
         </tbody>
       </table>
-     <!--  <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
-      </div> -->
-
+  
     </div>
     <script>
       layui.use('laydate', function(){
@@ -126,6 +94,16 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
         });
       });
 
+      
+      function del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              //等以后再使用异步，这里先使用
+              $.get("${ctx}/leave/del?id="+id);
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
+          });
+      }
        /*用户-停用*/
       
       /*用户-删除*/
@@ -133,7 +111,7 @@ listuse<%@ page language="java" contentType="text/html; charset=UTF-8"
           layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
               //等以后再使用异步，这里先使用
-              $.get("${ctx}/leave/edit?id="+id);
+              $.get("${ctx}/leave/del?id="+id);
               $(obj).parents("tr").remove();
               layer.msg('已修改!',{icon:1,time:1000});
           });
