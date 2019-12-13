@@ -40,8 +40,9 @@ public class UserController {
 		}
 		
 		@RequestMapping(value="/regitForm/")
-		public String regitIndex() {
-			return "regitForm";
+		public ModelAndView regitIndex(ModelAndView mv) {
+			mv.setViewName("forward:/regitForm");
+			return mv;
 		}
 		
 //		退出功能

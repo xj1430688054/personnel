@@ -43,7 +43,8 @@
     </div>
 	<script type="text/javascript">
 	$("#redit").click(function(){
-	    alert("click");
+		// $.get("${ctx}/regitForm");
+		window.location.href = "${ctx}/regitForm"; 
 	})
 
 
@@ -67,8 +68,6 @@
 
 	
 	function lala(){
-		console.log(1);
-		alert(1);
 	}
 	</script>
 

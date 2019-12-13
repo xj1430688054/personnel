@@ -16,7 +16,7 @@
     <body>
     <div class="x-body layui-anim layui-anim-up">
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">${sessionScope.user_session.username }</span>！当前时间:2018-04-25 20:50:53-------这些数据都是假的，认真你就输了</blockquote>
+            <span class="x-red">${sessionScope.user_session.username }</span>！当前时间:2019-12-14 20:50:53-------这些数据都是假的，认真你就输了</blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>
             <div class="layui-field-box">
@@ -26,48 +26,7 @@
                             <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 90px;">
                                 <div carousel-item="">
                                     <ul class="layui-row layui-col-space10 layui-this">
-                                      <%--   <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
-                                                <p>
-                                                    <cite>66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>会员数</h3>
-                                                <p>
-                                                    <cite>12</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>回复数</h3>
-                                                <p>
-                                                    <cite>99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>商品数</h3>
-                                                <p>
-                                                    <cite>67</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
-                                                <p>
-                                                    <cite>67</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文章数</h3>
-                                                <p>
-                                                    <cite>6766</cite></p>
-                                            </a>
-                                        </li> --%>
+
                                     </ul>
                                 </div>
                             </div>
@@ -83,12 +42,12 @@
                     <tbody>
                         <tr>
                             <td >
-                                <a class="x-a" href="/" target="_blank">新版x-admin 2.0上线了</a>
+                                <a class="x-a" href="/" target="_blank">公务用车系统</a>
                             </td>
                         </tr>
                         <tr>
                             <td >
-                                <a class="x-a" href="/" target="_blank">交流qq群:(519492808)</a>
+                                <a class="x-a" href="/" target="_blank">联系方式：110</a>
                             </td>
                         </tr>
                     </tbody>
@@ -108,37 +67,17 @@
                             <td>x.xuebingsi.com</td></tr>
                         <tr>
                             <th>操作系统</th>
-                            <td>WINNT</td></tr>
-                        <tr>
-                            <th>运行环境</th>
-                            <td>Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9</td></tr>
-                        <tr>
-                            <th>PHP版本</th>
-                            <td>5.6.27</td></tr>
-                        <tr>
-                            <th>PHP运行方式</th>
-                            <td>cgi-fcgi</td></tr>
+                            <td>WIN10</td></tr>
                         <tr>
                             <th>MYSQL版本</th>
                             <td>5.5.53</td></tr>
-                        <tr>
-                            <th>ThinkPHP</th>
-                            <td>5.0.18</td></tr>
-                        <tr>
-                            <th>上传附件限制</th>
-                            <td>2M</td></tr>
-                        <tr>
-                            <th>执行时间限制</th>
-                            <td>30s</td></tr>
-                        <tr>
-                            <th>剩余空间</th>
-                            <td>86015.2M</td></tr>
+
                     </tbody>
                 </table>
             </div>
         </fieldset>
         <fieldset class="layui-elem-field">
-            <legend>开发团队</legend>
+            <legend>开发着 XX</legend>
             <div class="layui-field-box">
                 <table class="layui-table">
                     <tbody>

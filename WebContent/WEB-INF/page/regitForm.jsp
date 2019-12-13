@@ -25,7 +25,7 @@
     <div class="login layui-anim layui-anim-up">
         <div class="message">公务用车系统-注册</div>
         <div id="darkbannerwrap"></div>
-        <form method="post" class="layui-form" action="${ctx}/redit" id="form1">
+        <form method="post" class="layui-form" action="${ctx}/regit" id="form1">
            <input type="hidden" name="id" id="id" value="${job.id }" >
           <div class="layui-form-item" >
               <label for="username" class="layui-form-label">

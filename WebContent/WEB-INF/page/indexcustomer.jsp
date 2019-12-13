@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>人事管理</title>
+	<title>公务用车系统</title>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -34,7 +34,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','${ctx }/employee/add?id=${sessionScope.user_session.id }')">个人信息</a></dd>
               <%-- <dd><a onclick="x_admin_show('购物车','${ctx }/mall/cart')">购物车</a></dd> --%>
-              <dd><a onclick="x_admin_show('切换帐号','${ctx}/user/logout">切换帐号</a></dd>
+<%--               <dd><a onclick="x_admin_show('切换帐号','${ctx}/user/logout">切换帐号</a></dd> --%>
               <dd><a href="${ctx}/user/logout">退出</a></dd>
             </dl>
           </li>
@@ -66,7 +66,7 @@
                     <li>
                         <a _href="${ctx }/leave/appl">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>请假申请</cite>
+                            <cite>新车增加</cite>
                         </a>
                     </li >
                     <li>

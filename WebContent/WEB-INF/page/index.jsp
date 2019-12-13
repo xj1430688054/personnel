@@ -33,7 +33,7 @@
             <a href="javascript:;">${sessionScope.user_session.username }</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','${ctx }/user/myupdate')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','${ctx}/user/logout">切换帐号</a></dd>
+             <%--  <dd><a onclick="x_admin_show('切换帐号','${ctx}/user/logout">切换帐号</a></dd> --%>
               <dd><a href="${ctx}/user/logout">退出</a></dd>
             </dl>
           </li>
